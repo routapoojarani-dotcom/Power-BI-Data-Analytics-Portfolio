@@ -85,8 +85,8 @@ Interactive Dashboard
 Business Insights
 Data Quality & Validation
 
-## Before performing the analysis, the dataset was examined for data-quality issues using SQL.
-## The validation process included:
+Before performing the analysis, the dataset was examined for data-quality issues using SQL.
+The validation process included:
 Checking total record counts
 Identifying missing values
 Checking for duplicate Loan IDs
