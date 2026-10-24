@@ -27,11 +27,11 @@ Bar plots for sales and profits
 Line plot for sales trends over time
 
 # Visualizations
-https://github.com/tejas8801/Sample-Superstore/blob/main/Screenshot%202026-03-16%20035150.png
-https://github.com/tejas8801/Sample-Superstore/blob/main/Screenshot%202026-03-16%20035216.png
-https://github.com/tejas8801/Sample-Superstore/blob/main/Screenshot%202026-03-16%20035230.png
-https://github.com/tejas8801/Sample-Superstore/blob/main/Screenshot%202026-03-16%20035256.png
-
+https://github.com/routapoojarani-dotcom/Power-BI-Data-Analytics-Portfolio/blob/bc897431c383f1a823f0a9becfb73a47029a9d06/Superstore-Business-Analysis/Images/Monthly%20Sales%20Trends%20Over%20Time.png
+https://github.com/routapoojarani-dotcom/Power-BI-Data-Analytics-Portfolio/blob/bc897431c383f1a823f0a9becfb73a47029a9d06/Superstore-Business-Analysis/Images/Top%205%20Products%20by%20Sales.png
+https://github.com/routapoojarani-dotcom/Power-BI-Data-Analytics-Portfolio/blob/bc897431c383f1a823f0a9becfb73a47029a9d06/Superstore-Business-Analysis/Images/Total%20Profit%20by%20Region.png
+https://github.com/routapoojarani-dotcom/Power-BI-Data-Analytics-Portfolio/blob/bc897431c383f1a823f0a9becfb73a47029a9d06/Superstore-Business-Analysis/Images/Total%20Sales%20by%20Category.png
+https://github.com/routapoojarani-dotcom/Power-BI-Data-Analytics-Portfolio/blob/bc897431c383f1a823f0a9becfb73a47029a9d06/Superstore-Business-Analysis/Images/Total%20Sales%20by%20Region.png
    
 # Key Insights
 Sales distribution across regions
