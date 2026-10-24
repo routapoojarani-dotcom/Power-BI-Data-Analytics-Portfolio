@@ -27,11 +27,15 @@ Bar plots for sales and profits
 Line plot for sales trends over time
 
 # Visualizations
-https://github.com/routapoojarani-dotcom/Power-BI-Data-Analytics-Portfolio/blob/bc897431c383f1a823f0a9becfb73a47029a9d06/Superstore-Business-Analysis/Images/Monthly%20Sales%20Trends%20Over%20Time.png
-https://github.com/routapoojarani-dotcom/Power-BI-Data-Analytics-Portfolio/blob/bc897431c383f1a823f0a9becfb73a47029a9d06/Superstore-Business-Analysis/Images/Top%205%20Products%20by%20Sales.png
-https://github.com/routapoojarani-dotcom/Power-BI-Data-Analytics-Portfolio/blob/bc897431c383f1a823f0a9becfb73a47029a9d06/Superstore-Business-Analysis/Images/Total%20Profit%20by%20Region.png
-https://github.com/routapoojarani-dotcom/Power-BI-Data-Analytics-Portfolio/blob/bc897431c383f1a823f0a9becfb73a47029a9d06/Superstore-Business-Analysis/Images/Total%20Sales%20by%20Category.png
-https://github.com/routapoojarani-dotcom/Power-BI-Data-Analytics-Portfolio/blob/bc897431c383f1a823f0a9becfb73a47029a9d06/Superstore-Business-Analysis/Images/Total%20Sales%20by%20Region.png
+1. https://github.com/routapoojarani-dotcom/Power-BI-Data-Analytics-Portfolio/blob/bc897431c383f1a823f0a9becfb73a47029a9d06/Superstore-Business-Analysis/Images/Monthly%20Sales%20Trends%20Over%20Time.png
+
+2. https://github.com/routapoojarani-dotcom/Power-BI-Data-Analytics-Portfolio/blob/bc897431c383f1a823f0a9becfb73a47029a9d06/Superstore-Business-Analysis/Images/Top%205%20Products%20by%20Sales.png
+
+3. https://github.com/routapoojarani-dotcom/Power-BI-Data-Analytics-Portfolio/blob/bc897431c383f1a823f0a9becfb73a47029a9d06/Superstore-Business-Analysis/Images/Total%20Profit%20by%20Region.png
+
+4. https://github.com/routapoojarani-dotcom/Power-BI-Data-Analytics-Portfolio/blob/bc897431c383f1a823f0a9becfb73a47029a9d06/Superstore-Business-Analysis/Images/Total%20Sales%20by%20Category.png
+
+5. https://github.com/routapoojarani-dotcom/Power-BI-Data-Analytics-Portfolio/blob/bc897431c383f1a823f0a9becfb73a47029a9d06/Superstore-Business-Analysis/Images/Total%20Sales%20by%20Region.png
    
 # Key Insights
 Sales distribution across regions
