@@ -1,0 +1,7 @@
+# Optional semantic FAISS retrieval. The default lexical retriever needs no extras.
+-r requirements.txt
+faiss-cpu>=1.13,<2
+langchain-community>=0.4,<0.5
+langchain-huggingface>=1.2,<2
+sentence-transformers>=5.2,<6
+

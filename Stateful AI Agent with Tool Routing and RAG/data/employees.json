@@ -1,0 +1,27 @@
+[
+  {
+    "employee_id": "E101",
+    "name": "Daniel Lee",
+    "department": "Engineering",
+    "role": "Software Engineer",
+    "annual_salary": 95000,
+    "annual_leave_taken": 6
+  },
+  {
+    "employee_id": "E102",
+    "name": "Sarah Patel",
+    "department": "Finance",
+    "role": "Financial Analyst",
+    "annual_salary": 80000,
+    "annual_leave_taken": 8
+  },
+  {
+    "employee_id": "E103",
+    "name": "Miguel Santos",
+    "department": "Customer Success",
+    "role": "Customer Success Manager",
+    "annual_salary": 87000,
+    "annual_leave_taken": 12
+  }
+]
+

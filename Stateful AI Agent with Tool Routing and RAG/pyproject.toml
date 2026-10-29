@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=80"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "langgraph-agentic-ai-tutorial"
+version = "1.0.0"
+description = "A beginner-friendly end-to-end Agentic AI tutorial using LangGraph, Azure OpenAI, Flask, and Python."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [{name = "Ashok Manohar"}]
+dependencies = [
+  "Flask>=3.1,<3.2",
+  "langchain>=1.3,<1.4",
+  "langchain-openai>=1.4,<1.5",
+  "langgraph>=1.2,<1.3",
+  "langgraph-checkpoint-sqlite>=3.1,<4",
+  "pydantic>=2.12,<3",
+  "pydantic-settings>=2.12,<3",
+  "python-dotenv>=1.2,<2",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=9,<10", "pytest-cov>=7,<8", "ruff>=0.14,<1"]
+rag = [
+  "faiss-cpu>=1.13,<2",
+  "langchain-community>=0.4,<0.5",
+  "langchain-huggingface>=1.2,<2",
+  "sentence-transformers>=5.2,<6",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q --strict-markers"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]

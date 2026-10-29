@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A beginner-friendly LangGraph Agentic AI tutorial application">
+    <title>{% block title %}LangGraph AI Agent{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script defer src="{{ url_for('static', filename='js/app.js') }}"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <header class="site-header">
+      <div class="shell header-inner">
+        <a class="brand" href="{{ url_for('index') }}" aria-label="LangGraph AI Agent home">
+          <span class="brand-mark" aria-hidden="true">LG</span>
+          <span>LangGraph AI Agent</span>
+        </a>
+        <span class="education-badge">Educational demo</span>
+      </div>
+    </header>
+    <main id="main-content" class="shell">
+      {% block content %}{% endblock %}
+    </main>
+    <footer class="shell site-footer">
+      <p>LLM decides · Tool acts · State remembers · Graph controls flow</p>
+    </footer>
+  </body>
+</html>
+

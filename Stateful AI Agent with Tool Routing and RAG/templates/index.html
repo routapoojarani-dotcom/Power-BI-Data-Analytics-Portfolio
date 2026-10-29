@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block content %}
+  <section class="hero">
+    <div>
+      <p class="eyebrow">Agent = LLM + Tools + State + Control Flow</p>
+      <h1>Ask the agent to perform a task</h1>
+      <p class="hero-copy">
+        Try a calculation, an employee lookup, an order question, current time, or a company-policy query.
+      </p>
+    </div>
+    <div class="flow-card" aria-label="Agent loop overview">
+      <span>Decide</span><b>→</b><span>Use tool</span><b>→</b><span>Observe</span><b>→</b><span>Decide again</span>
+    </div>
+  </section>
+
+  <div class="workspace-grid">
+    <section class="panel chat-panel" aria-labelledby="conversation-title">
+      <div class="panel-header">
+        <div>
+          <p class="eyebrow">Conversation</p>
+          <h2 id="conversation-title">Thread{% if thread_id %} {{ thread_id[:8] }}{% endif %}</h2>
+        </div>
+        {% if conversation %}
+          <form method="post" action="{{ url_for('new_chat') }}">
+            <button class="button button-secondary" type="submit">New chat</button>
+          </form>
+        {% endif %}
+      </div>
+
+      {% if error %}<div class="alert" role="alert">{{ error }}</div>{% endif %}
+      {% include "conversation.html" %}
+
+      <form class="composer" method="post" action="{{ url_for('chat') }}" data-agent-form>
+        <label for="message">Your request</label>
+        <div class="composer-row">
+          <textarea id="message" name="message" rows="2" maxlength="4000"
+            placeholder="What is employee E102's salary after a 7% increase?" required></textarea>
+          <button class="button button-primary" type="submit" data-send-button>Send</button>
+        </div>
+        <p class="working-message" role="status" aria-live="polite" data-working-message hidden>
+          Agent is working…
+        </p>
+      </form>
+    </section>
+
+    <aside class="side-stack">
+      <section class="panel examples-panel">
+        <p class="eyebrow">Try these</p>
+        <h2>Example requests</h2>
+        <button class="prompt-chip" data-prompt="What is 18% of 4250?">18% of 4250</button>
+        <button class="prompt-chip" data-prompt="What department does employee E102 work in?">Employee E102</button>
+        <button class="prompt-chip" data-prompt="What is the status of order ORD-1042?">Order ORD-1042</button>
+        <button class="prompt-chip" data-prompt="According to company policy, how many annual leave days does E102 have remaining?">Agentic RAG</button>
+      </section>
+      {% include "result.html" %}
+    </aside>
+  </div>
+{% endblock %}
+

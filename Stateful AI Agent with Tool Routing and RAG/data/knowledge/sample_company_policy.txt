@@ -1,0 +1,17 @@
+Sample Company Policy — Educational Data Only
+
+Annual Leave
+All full-time employees receive 25 days of paid annual leave per calendar year. Leave already taken is subtracted from this allowance. Unused leave may carry over up to 5 days with manager approval. This sample policy is not legal or HR advice.
+
+Order Cancellation
+An order may be cancelled automatically only while its status is Processing. Shipped orders require a support review. Any cancellation action must receive explicit human approval before a record is changed.
+
+Expense Approval
+Expenses up to $500 require a line-manager approval. Expenses above $500 require both line-manager and Finance approval. The agent may explain this rule but cannot approve expenses.
+
+Remote Work
+Employees may request up to three remote-working days per week. The employee's manager decides based on team coverage and local policy.
+
+Data Handling
+Employee and customer data must be used only for an authorized business purpose. Credentials, access tokens, and sensitive personal information must never be placed in prompts, logs, or browser-visible output.
+

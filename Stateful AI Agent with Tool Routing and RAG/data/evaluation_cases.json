@@ -1,0 +1,8 @@
+[
+  {"query": "What is 15% of 200?", "expected_tool": "calculator"},
+  {"query": "What department is employee E102 in?", "expected_tool": "employee_lookup"},
+  {"query": "What is the status of order ORD-1042?", "expected_tool": "order_lookup"},
+  {"query": "What does the annual leave policy say?", "expected_tool": "knowledge_search"},
+  {"query": "Hello!", "expected_tool": null}
+]
+

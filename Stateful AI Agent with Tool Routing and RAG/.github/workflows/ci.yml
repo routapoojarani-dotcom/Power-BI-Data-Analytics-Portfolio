@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+      - run: python -m pip install --upgrade pip
+      - run: pip install -r requirements-dev.txt
+      - run: ruff check .
+      - run: pytest --cov=src --cov=tools --cov=app --cov-report=term-missing
+      - name: Run offline progressive examples
+        run: |
+          python examples/02_first_graph.py
+          python examples/03_state.py
+          python examples/04_conditional_edges.py
+          python examples/05_first_tool.py
+          python examples/07_agent_loop.py
+          python examples/08_memory.py
+          python examples/09_checkpointing.py
+          python examples/10_human_in_loop.py
+          python examples/11_rag_tool.py
+          python examples/12_supervisor.py
+          python examples/13_multi_agent.py
+          python scripts/run_evaluation.py
+

@@ -1,0 +1,16 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+.env
+*.log
+*.sqlite
+*.sqlite3
+data/checkpoints/*
+!data/checkpoints/.gitkeep
+.DS_Store
+.idea/
+.vscode/
+

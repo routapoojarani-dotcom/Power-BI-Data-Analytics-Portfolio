@@ -1,0 +1,107 @@
+name: Daily Heartbeat
+
+on:
+  schedule:
+    # Every minute; job runs only when current (hour, minute) matches one of today's 2–8 slots
+    - cron: "* * * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: repo-health-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  health:
+    name: Repository health
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set date and deterministic schedule
+        id: schedule
+        run: |
+          set -euo pipefail
+          export DATE=$(date -u +%Y-%m-%d)
+          echo "date=${DATE}" >> "$GITHUB_OUTPUT"
+          python3 << 'PY'
+          import hashlib
+          import os
+          repo = os.environ["GITHUB_REPOSITORY"]
+          date = os.environ["DATE"]
+          seed = f"{repo}{date}"
+          h = hashlib.sha256(seed.encode()).hexdigest()
+          # 2–8 runs per day
+          run_count = 2 + (int(h[:8], 16) % 7)
+          # Deterministic random (hour, minute) slots for today
+          order = list(range(24))
+          order.sort(key=lambda i: hashlib.sha256(f"{seed}{i}".encode()).hexdigest())
+          hours = sorted(order[:run_count])
+          slots = []
+          for hr in hours:
+            mh = hashlib.sha256(f"{seed}{hr}min".encode()).hexdigest()
+            minute = int(mh[:4], 16) % 60
+            slots.append(f"{hr:02d}:{minute:02d}")
+          allowed_slots_str = ",".join(slots)
+          with open(os.environ["GITHUB_OUTPUT"], "a") as f:
+            f.write(f"run_count={run_count}\n")
+            f.write(f"allowed_slots={allowed_slots_str}\n")
+          PY
+
+      - name: Skip if not an execution slot
+        id: skip
+        run: |
+          set -euo pipefail
+          CURRENT=$(date -u +%H:%M)
+          SLOTS="${{ steps.schedule.outputs.allowed_slots }}"
+          if [[ ",${SLOTS}," != *",${CURRENT},"* ]]; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            echo "Skipping: ${CURRENT} not in [${SLOTS}]"
+            exit 0
+          fi
+          echo "skip=false" >> "$GITHUB_OUTPUT"
+
+      - name: Generate repo-health.json
+        if: steps.skip.outputs.skip != 'true'
+        run: |
+          set -euo pipefail
+          export DATE="${{ steps.schedule.outputs.date }}"
+          export TIMESTAMP=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+          export RUN_ID="${{ github.run_id }}"
+          export TRACKED_FILES=$(git ls-files | wc -l | tr -d ' ')
+          export LATEST_COMMIT=$(git rev-parse HEAD)
+          python3 << 'PY'
+          import json
+          import os
+          data = {
+            "date": os.environ["DATE"],
+            "timestamp": os.environ["TIMESTAMP"],
+            "run_id": os.environ["RUN_ID"],
+            "tracked_files": int(os.environ["TRACKED_FILES"]),
+            "latest_commit": os.environ["LATEST_COMMIT"],
+            "workflow_run": int(os.environ["RUN_ID"]),
+          }
+          with open("repo-health.json", "w") as f:
+            json.dump(data, f, indent=2)
+          PY
+
+      - name: Commit and push
+        if: steps.skip.outputs.skip != 'true'
+        run: |
+          set -euo pipefail
+          DATE="${{ steps.schedule.outputs.date }}"
+          CURRENT=$(date -u +%H:%M)
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add repo-health.json
+          if git diff --staged --quiet; then
+            echo "No changes to repo-health.json"
+            exit 0
+          fi
+          git commit -m "chore(health): repository status update ${DATE} ${CURRENT}"
+          git push
+

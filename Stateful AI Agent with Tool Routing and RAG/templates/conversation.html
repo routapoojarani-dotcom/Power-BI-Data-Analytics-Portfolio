@@ -1,0 +1,17 @@
+<div class="conversation" aria-live="polite">
+  {% if conversation %}
+    {% for item in conversation %}
+      <article class="message message-{{ item.role }}">
+        <p class="message-label">{{ "You" if item.role == "user" else "Agent" }}</p>
+        <p>{{ item.content }}</p>
+      </article>
+    {% endfor %}
+  {% else %}
+    <div class="empty-state">
+      <span aria-hidden="true">◎</span>
+      <h3>No messages yet</h3>
+      <p>The graph will show observable tool activity after your first request.</p>
+    </div>
+  {% endif %}
+</div>
+

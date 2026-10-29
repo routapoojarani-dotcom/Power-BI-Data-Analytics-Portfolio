@@ -1,0 +1,24 @@
+<section class="panel activity-panel" aria-labelledby="activity-title">
+  <p class="eyebrow">Observable events only</p>
+  <h2 id="activity-title">Agent activity</h2>
+  {% if last_activity %}
+    <ol class="activity-list">
+      {% for step in last_activity %}
+        <li class="activity-{{ step.status }}">
+          <span class="activity-icon" aria-hidden="true">{{ "✓" if step.status == "success" else "!" }}</span>
+          <span>
+            {% if step.type == "received" %}Received question
+            {% elif step.type == "tool_call" %}Selected <code>{{ step.tool }}</code>
+            {% elif step.type == "tool_result" %}<code>{{ step.tool }}</code> completed
+            {% elif step.type == "response" %}Generated response
+            {% elif step.type == "guardrail" %}Stopped by guardrail
+            {% else %}{{ step.type | replace("_", " ") | title }}{% endif %}
+          </span>
+        </li>
+      {% endfor %}
+    </ol>
+  {% else %}
+    <p class="muted">Tool calls and results will appear here. Hidden model reasoning is never displayed.</p>
+  {% endif %}
+</section>
+
